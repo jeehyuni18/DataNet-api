@@ -46,6 +46,26 @@ app.get('/api/company/link', (req, res) => {
     });
 })
 
+app.post('/api/company', (req, res) => {
+    console.log(res.body);
+    console.log(res);
+    // pool.getConnection()
+    //     .then(conn => {
+    //         conn.query("SELECT * FROM datanet.link")
+    //             .then(rows=>  { // rows: [ {val: 1}, meta: ... ]
+    //                 res.statusCode = 200
+    //                 res.send({ links:rows })
+    //                 conn.release();
+    //             })
+    //             .catch(err => {
+    //                 console.log(err)
+    //                 conn.release(); // release to pool
+    //             })
+    //     }).catch(err => {
+    //     console.log(err)
+    // });
+})
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
