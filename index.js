@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const http = require('http')
 const port = 3000
 const hostname = 'datanetapi.illunex.com'
 const cors = require('cors');
@@ -157,8 +158,10 @@ app.get('/api/company/search', (req, res) => {
     });
 })
 
+const server = http.createServer(app);
+server.listen(3000,hostname)
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+server.on('listening', () => {
+    console.log(`Example app listening at`)
 })
 
