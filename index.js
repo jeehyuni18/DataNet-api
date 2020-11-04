@@ -21,7 +21,6 @@ app.get('/api/company', (req, res) => {
                     res.statusCode = 200
                     res.send({ rows })
                     conn.release();
-                    console.log(rows)
                 })
                 .catch(err => {
                     console.log(err)
