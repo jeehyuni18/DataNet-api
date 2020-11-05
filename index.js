@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
-const port = 3020
+const http = require('http')
 const cors = require('cors');
 const bodyParser = require('body-parser')
 
@@ -175,8 +175,10 @@ app.get('/api/company/search', (req, res) => {
     });
 })
 
+const server = http.createServer(app);
+server.listen(3000,'0.0.0.0')
 
-app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+server.on('listening', () => {
+    console.log(`Example app listening at`)
 })
 
