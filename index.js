@@ -137,6 +137,25 @@ app.delete('/api/company', (req, res) => {
     });
 })
 
+app.delete('/api/companyName', (req, res) => {
+    const { kedcd } = req.body;
+    pool.getConnection()
+        .then(conn => {
+            conn.query(`DELETE FROM datanet.companyName WHERE companyName='${kedcd}'`)
+                .then(rows=>  { // rows: [ {val: 1}, meta: ... ]
+                    res.statusCode = 200
+                    res.send({ message: "SUCCESS" })
+                    conn.release();
+                })
+                .catch(err => {
+                    console.log(err)
+                    conn.release(); // release to pool
+                })
+        }).catch(err => {
+        console.log(err)
+    });
+})
+
 app.get('/api/company/search', (req, res) => {
     const { companyName } = req.query;
     pool.getConnection()
